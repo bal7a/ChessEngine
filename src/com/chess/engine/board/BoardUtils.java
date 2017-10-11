@@ -1,5 +1,5 @@
 package com.chess.engine.board;
-
+import java.util.Map;
 public class BoardUtils {
 
     public static final boolean[] FIRST_COLUMN = initColumn(0);
@@ -10,6 +10,10 @@ public class BoardUtils {
     public static final boolean[] SECOND_ROW = initRow(8);
     public static final boolean[] SEVENTH_ROW = initRow(48);
 
+    public static final String[] ALGEBREIC_NOTATION = initializeAlgebreicNotation();
+    public static final Map<String, Integer> POSITION_TO_COORDINATE = initializePositionToCoordinateMap();
+
+
     public  static final int NUM_TILES = 64;
     public  static final int NUM_TILE_PER_ROW = 8;
 
@@ -19,6 +23,14 @@ public class BoardUtils {
 
     public static boolean isValidTileCoordinate(final int coordinate) {
         return coordinate >= 0 && coordinate < NUM_TILES;
+    }
+
+    public static int getCoordinateAtPosition(final String position){
+        return POSITION_TO_COORDINATE.get(position);
+
+    }
+    public static int getPositionAtCoordinate(final int coordinate){
+        return ALGEBREIC_NOTATION[coordinate];
     }
 
     private static boolean[] initRow(int rowNumber){

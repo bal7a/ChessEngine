@@ -13,11 +13,11 @@ public abstract class Piece {
     protected final Alliance pieceAlliance;
     protected final boolean isFirstMove;
 
-    public Piece(final PieceType pieceType, final int piecePosition, final Alliance pieceAlliance) {
+    public Piece(final PieceType pieceType, final int piecePosition, final Alliance pieceAlliance, final boolean isFirstMove) {
         this.pieceType=pieceType;
         this.piecePosition = piecePosition;
         this.pieceAlliance = pieceAlliance;
-        this.isFirstMove = false;
+        this.isFirstMove = isFirstMove;
     }
 
     public PieceType getPieceType(){
@@ -90,3 +90,4 @@ public abstract class Piece {
         public abstract boolean isKing();
     }
 }
+
