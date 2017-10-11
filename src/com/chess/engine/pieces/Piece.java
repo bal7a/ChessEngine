@@ -4,7 +4,7 @@ import com.chess.engine.Alliance;
 import com.chess.engine.board.Board;
 import com.chess.engine.board.Move;
 
-import java.util.Collection;
+import java.util.Collection;  
 
 public abstract class Piece {
 
