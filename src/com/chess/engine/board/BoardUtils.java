@@ -27,7 +27,7 @@ public class BoardUtils {
 
     public static final int NUM_TILES_PER_ROW = 8;
     public static final int NUM_TILES = 64;
->>>>>>> 08c0adb3dc64d73cd0d73ad89d9175fdd4ed2252
+
 
     private BoardUtils() {
         throw new RuntimeException("You cannot instantiate me!");
