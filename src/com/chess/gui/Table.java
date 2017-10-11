@@ -1,7 +1,7 @@
 
 package com.chess.gui;
 
-import com.chess.engine.board.BoardUtils;
+import com.chess.engine.board.BoardUtils;  
 
 import javax.swing.*;
 import java.awt.*;
@@ -88,6 +88,20 @@ public class Table {
              validate();
          }
 
+        private void assignTilePieceIcon(final Board board) {
+            this.removeAll();
+            if(board.getTile(this.tileId).isTileOccupied()) {
+                try{
+                    final BufferedImage image = ImageIO.read(new File(pieceIconPath +
+                            board.getTile(this.tileId).getPiece().getPieceAllegiance().toString().substring(0, 1) + "" +
+                            board.getTile(this.tileId).getPiece().toString() +
+                            ".gif"));
+                    add(new JLabel(new ImageIcon(image)));
+                } catch(final IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
         private void assignTileColor() {
             if (BoardUtils.EIGTH_RANK[this.tileId] ||
                     BoardUtils.SIXTH_RANK[this.tileId] ||
@@ -104,7 +118,7 @@ public class Table {
 
 
     }
-    
+
 }
 
 public static class MoveLog {

@@ -11,7 +11,6 @@ package com.chess.engine.classic.player;
         import com.chess.engine.classic.pieces.Piece;
         import com.chess.engine.classic.pieces.Rook;
         import com.google.common.collect.ImmutableList;
-
         import java.util.ArrayList;
         import java.util.Collection;
         import java.util.List;
@@ -62,7 +61,7 @@ public final class BlackPlayer extends Player {
                                 new QueenSideCastleMove(this.board, this.playerKing, 2, (Rook) rookTile.getPiece(), rookTile.getTileCoordinate(), 3));
                     }
                 }
-            }
+            }   
         }
         return ImmutableList.copyOf(kingCastles);
     }
