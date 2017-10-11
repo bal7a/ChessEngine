@@ -7,15 +7,27 @@ public class BoardUtils {
     public static final boolean[] SEVENTH_COLUMN = initColumn(6);
     public static final boolean[] EIGHTH_COLUMN = initColumn(7);
 
-    public static final boolean[] SECOND_ROW = initRow(8);
-    public static final boolean[] SEVENTH_ROW = initRow(48);
 
+<<<<<<< HEAD
     public static final String[] ALGEBREIC_NOTATION = initializeAlgebreicNotation();
     public static final Map<String, Integer> POSITION_TO_COORDINATE = initializePositionToCoordinateMap();
 
 
     public  static final int NUM_TILES = 64;
     public  static final int NUM_TILE_PER_ROW = 8;
+=======
+    public static final boolean[] EIGTH_RANK = initRow(0);
+    public static final boolean[] SEVENTH_RANK = initRow(8);
+    public static final boolean[] SIXTH_RANK = initRow(16);
+    public static final boolean[] FIFTH_RANK = initRow(24);
+    public static final boolean[] FOURTH_RANK = initRow(32);
+    public static final boolean[] THIRD_RANK = initRow(40);
+    public static final boolean[] SECOND_RANK = initRow(48);
+    public static final boolean[] FIRST_RANK = initRow(56);
+
+    public static final int NUM_TILES_PER_ROW = 8;
+    public static final int NUM_TILES = 64;
+>>>>>>> 08c0adb3dc64d73cd0d73ad89d9175fdd4ed2252
 
     private BoardUtils() {
         throw new RuntimeException("You cannot instantiate me!");
@@ -30,7 +42,7 @@ public class BoardUtils {
 
     }
     public static int getPositionAtCoordinate(final int coordinate){
-        return ALGEBREIC_NOTATION[coordinate];
+        return ALGEBREIC_NOTATION[coordinate];   
     }
 
     private static boolean[] initRow(int rowNumber){
@@ -38,7 +50,7 @@ public class BoardUtils {
         do {
             row[rowNumber] = true;
             rowNumber++;
-        } while(rowNumber % NUM_TILE_PER_ROW != 0);
+        } while(rowNumber % NUM_TILES_PER_ROW != 0);
         return row;
     }
 
@@ -46,7 +58,7 @@ public class BoardUtils {
         final boolean[] column = new boolean[NUM_TILES];
         do{
             column[columnNumber] = true;
-            columnNumber += NUM_TILE_PER_ROW;
+            columnNumber += NUM_TILES_PER_ROW;
         }while (columnNumber < NUM_TILES);
         return column;
     }
