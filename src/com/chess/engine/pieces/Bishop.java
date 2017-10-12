@@ -13,13 +13,14 @@ import java.util.List;
 
 import static com.chess.engine.board.Move.*;
 
-public class Bishop extends Piece{
+public class Bishop extends Piece {
 
-    private final static int[] CANDIDATE_MOVR_VECTOR_COORDINATES = {-9, -7, 7, 9};
+    private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -7, 7, 9};
 
     public Bishop(final Alliance pieceAlliance, final int piecePosition) {
         super(PieceType.BISHOP, piecePosition, pieceAlliance, true);
     }
+
     public Bishop(final Alliance pieceAlliance, final int piecePosition, final boolean isFirstMove) {
         super(PieceType.BISHOP, piecePosition, pieceAlliance, isFirstMove);
     }
@@ -27,7 +28,7 @@ public class Bishop extends Piece{
     @Override
     public Collection<Move> calculateLegalMoves(final Board board) {
         final List<Move> legalMoves = new ArrayList<>();
-        for (final int currentCandidateOffset : CANDIDATE_MOVR_VECTOR_COORDINATES) {
+        for (final int currentCandidateOffset : CANDIDATE_MOVE_VECTOR_COORDINATES) {
             int candidateDestinationCoordinate = this.piecePosition;
             while (BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                 if (isFirstColumnExclusion(currentCandidateOffset, candidateDestinationCoordinate) ||
@@ -39,8 +40,7 @@ public class Bishop extends Piece{
                     final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
                     if (!candidateDestinationTile.isTileOccupied()) {
                         legalMoves.add(new MajorMove(board, this, candidateDestinationCoordinate));
-                    }
-                    else {
+                    } else {
                         final Piece pieceAtDestination = candidateDestinationTile.getPiece();
                         final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();
                         if (this.pieceAlliance != pieceAlliance) {
@@ -49,10 +49,16 @@ public class Bishop extends Piece{
                         break;
                     }
                 }
-            }  
+            }
         }
         return ImmutableList.copyOf(legalMoves);
     }
+
+    @Override
+    public Bishop movePiece(Move move) {
+        return new Bishop(move.getMovedPiece().getPieceAlliance(), move.getDestinationCoordinate());
+    }
+
 
     @Override
     public String toString() {

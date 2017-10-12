@@ -8,15 +8,11 @@ public class BoardUtils {
     public static final boolean[] EIGHTH_COLUMN = initColumn(7);
 
 
-<<<<<<< HEAD
-    public static final String[] ALGEBREIC_NOTATION = initializeAlgebreicNotation();
-    public static final Map<String, Integer> POSITION_TO_COORDINATE = initializePositionToCoordinateMap();
+//    public static final String[] ALGEBRAIC_NOTATION = initializeAlgebreicNotation();
+//    public static final Map<String, Integer> POSITION_TO_COORDINATE = initializePositionToCoordinateMap();
 
 
-    public  static final int NUM_TILES = 64;
-    public  static final int NUM_TILE_PER_ROW = 8;
-=======
-    public static final boolean[] EIGTH_RANK = initRow(0);
+    public static final boolean[] EIGHTH_RANK = initRow(0);
     public static final boolean[] SEVENTH_RANK = initRow(8);
     public static final boolean[] SIXTH_RANK = initRow(16);
     public static final boolean[] FIFTH_RANK = initRow(24);
@@ -37,13 +33,13 @@ public class BoardUtils {
         return coordinate >= 0 && coordinate < NUM_TILES;
     }
 
-    public static int getCoordinateAtPosition(final String position){
-        return POSITION_TO_COORDINATE.get(position);
-
-    }
-    public static int getPositionAtCoordinate(final int coordinate){
-        return ALGEBREIC_NOTATION[coordinate];   
-    }
+//    public static int getCoordinateAtPosition(final String position){
+//        return POSITION_TO_COORDINATE.get(position);
+//
+//    }
+//    public static int getPositionAtCoordinate(final int coordinate){
+//        return ALGEBRAIC_NOTATION[coordinate];
+//    }
 
     private static boolean[] initRow(int rowNumber){
         final boolean[] row = new boolean[NUM_TILES];

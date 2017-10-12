@@ -3,7 +3,7 @@ package com.chess.engine.pieces;
 import com.chess.engine.Alliance;
 import com.chess.engine.board.Board;
 import com.chess.engine.board.BoardUtils;
-import com.chess.engine.board.Move;   
+import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
 import com.google.common.collect.ImmutableList;
 
@@ -50,6 +50,11 @@ public class Knight extends Piece{
         }
         return ImmutableList.copyOf(legalMoves);
     }
+    @Override
+    public Knight movePiece(Move move) {
+        return new Knight(move.getMovedPiece().getPieceAlliance(), move.getDestinationCoordinate());
+    }
+
 
     @Override
     public String toString() {
