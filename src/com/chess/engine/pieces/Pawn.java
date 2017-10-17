@@ -34,7 +34,7 @@ public class Pawn extends Piece {
             }
             if (currentCandidateOffset == 8 && !board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
                 if (this.pieceAlliance.isPawnPromotionSquare(candidateDestinationCoordinate)) {
-                    legalMoves.add(new PawnPromotion(board, this, candidateDestinationCoordinate));
+                    legalMoves.add(new PawnPromotion(new PawnMove(board, this, candidateDestinationCoordinate)));
                 } else {
                     legalMoves.add(new PawnMove(board, this, candidateDestinationCoordinate));
                 }
