@@ -108,7 +108,7 @@ public abstract class Move {
 
         @Override
         public String toString() {
-            return movedPiece.getPieceType() + BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
+            return movedPiece.getPieceType() + BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
         }
     }
 
@@ -125,7 +125,7 @@ public abstract class Move {
 
         @Override
         public String toString() {
-            return movedPiece.getPieceType().toString() + BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
+            return movedPiece.getPieceType().toString() + BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
         }
     }
 
@@ -181,7 +181,7 @@ public abstract class Move {
 
         @Override
         public String toString() {
-            return BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
+            return BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
         }
     }
 
@@ -198,8 +198,8 @@ public abstract class Move {
 
         @Override
         public String toString() {
-            return BoardUtils.getPositionAtCoordinate(this.movedPiece.getPiecePosition()).substring(0, 1) + "x" +
-                    BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
+            return BoardUtils.INSTANCE.getPositionAtCoordinate(this.movedPiece.getPiecePosition()).substring(0, 1) + "x" +
+                    BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
         }
     }
 
@@ -262,11 +262,11 @@ public abstract class Move {
             final Board.Builder builder = new Board.Builder();
             for (final Piece piece : pawnMovedBoard.currentPlayer().getActivePieces()) {
                 if (!this.promotedPawn.equals(piece)) {
-                    builder.setPiece(Piece);
+                    builder.setPiece(piece);
                 }
             }
             for (final Piece piece : pawnMovedBoard.currentPlayer().getOpponent().getActivePieces()) {
-                builder.setPiece(Piece);
+                builder.setPiece(piece);
             }
 
             builder.setPiece(this.promotedPawn.getPromotionPiece().movePiece(this));
