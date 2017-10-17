@@ -126,11 +126,6 @@ public abstract class Move {
         }
 
         @Override
-        public Board execute() {
-            return null;
-        }
-
-        @Override
         public boolean isAttack() {
             return true;
         }
@@ -180,7 +175,7 @@ public abstract class Move {
                     builder.setPiece(piece);
                 }
             }
-            for(final Piece piece : this.board.currentPlayer().getActivePieces()){
+            for(final Piece piece : this.board.currentPlayer().getOpponent().getActivePieces()){
                 builder.setPiece(piece);
             }
             final Pawn movedPawn = (Pawn) this.movedPiece.movePiece(this);
@@ -189,6 +184,12 @@ public abstract class Move {
             builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
             return builder.build();
         }
+
+        @Override
+        public boolean equals(final Object other) {
+            return this == other || other instanceof PawnJump && super.equals(other);
+        }
+
     }
 
     static abstract class CastleMove extends Move {

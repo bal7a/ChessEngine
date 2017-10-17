@@ -20,7 +20,6 @@ import java.util.List;
 
 public final class BlackPlayer extends Player {
 
-
     public BlackPlayer(final Board board,
                        final Collection<Move> whiteStandardLegals,
                        final Collection<Move> blackStandardLegals) {
@@ -28,9 +27,11 @@ public final class BlackPlayer extends Player {
     }
 
     @Override
-    protected Collection<Move> calculateKingCastles(final Collection<Move> playerLegals, final Collection<Move> opponentLegals) {
+    protected Collection<Move> calculateKingCastles(final Collection<Move> playerLegals,
+                                                    final Collection<Move> opponentLegals) {
 
         final List<Move> kingCastles = new ArrayList<>();
+
         if (this.playerKing.isFirstMove() && this.playerKing.getPiecePosition() == 4 && !this.isInCheck()) {
             //blacks king side castle
             if (!this.board.getTile(5).isTileOccupied() && !this.board.getTile(6).isTileOccupied()) {
@@ -62,7 +63,7 @@ public final class BlackPlayer extends Player {
 
     @Override
     public com.chess.engine.player.WhitePlayer getOpponent() {
-        return (WhitePlayer)this.board.whitePlayer();
+        return (WhitePlayer) this.board.whitePlayer();
     }
 
     @Override
@@ -79,8 +80,6 @@ public final class BlackPlayer extends Player {
     public String toString() {
         return Alliance.BLACK.toString();
     }
-
-
 
 
 }

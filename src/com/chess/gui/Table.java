@@ -53,6 +53,7 @@ public class Table {
         this.boardPanel = new BoardPanel();
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
         this.gameFrame.setVisible(true);
+        this.gameFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
 
@@ -101,9 +102,9 @@ public class Table {
             validate();
         }
 
-        public void drawBoard(final Board board){
+        public void drawBoard(final Board board) {
             removeAll();
-            for(final TilePanel tilePanel: boardTiles){
+            for (final TilePanel tilePanel : boardTiles) {
                 tilePanel.drawTile(board);
                 add(tilePanel);
 
@@ -129,6 +130,13 @@ public class Table {
                 @Override
                 public void mouseClicked(final MouseEvent e) {
 
+
+
+                }
+
+                @Override
+                public void mousePressed(final MouseEvent e) {
+
                     if (isRightMouseButton(e)) {
 
                         sourceTile = null;
@@ -143,12 +151,12 @@ public class Table {
                             if (humanMovedPiece == null) {
                                 sourceTile = null;
                             }
-                        } else{
+                        } else {
                             destinationTile = chessBoard.getTile(tileId);
                             final Move move = Move.MoveFactory.createMove(chessBoard, sourceTile.getTileCoordinate(), destinationTile.getTileCoordinate());
                             final MoveTransition transition = chessBoard.currentPlayer().makeMove(move);
 
-                            if(transition.getMoveStatus().isDone()){
+                            if (transition.getMoveStatus().isDone()) {
                                 chessBoard = transition.getTransitionBoard();
 
 
@@ -166,11 +174,6 @@ public class Table {
                         });
 
                     }
-
-                }
-
-                @Override
-                public void mousePressed(final MouseEvent e) {
 
                 }
 
@@ -194,7 +197,7 @@ public class Table {
             validate();
         }
 
-        public void drawTile(final Board board){
+        public void drawTile(final Board board) {
             assignTileColor();
             assignTilePieceIcon(board);
             validate();
@@ -207,7 +210,7 @@ public class Table {
 
                 try {
 
-                    final BufferedImage image = ImageIO.read(new File(defaultPieceImagesPath +"/"+
+                    final BufferedImage image = ImageIO.read(new File(defaultPieceImagesPath + "/" +
                             board.getTile(this.tileId).getPiece().getPieceAlliance().toString().substring(0, 1) +
                             board.getTile(this.tileId).getPiece().toString() +
                             ".gif"));
