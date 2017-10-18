@@ -26,6 +26,7 @@ public abstract class Move {
         int result = 1;
         result = prime * result + this.getDestinationCoordinate();
         result = prime * result + this.movedPiece.hashCode();
+        result = prime * result + this.movedPiece.getPiecePosition();
         return result;
     }
 
@@ -39,7 +40,8 @@ public abstract class Move {
         }
 
         final Move otherMove = (Move) other;
-        return getDestinationCoordinate() == otherMove.getDestinationCoordinate() &&
+        return getCurrentCoordinate() == otherMove.getCurrentCoordinate() &&
+                getDestinationCoordinate() == otherMove.getDestinationCoordinate() &&
                 getMovedPiece().equals(otherMove.getMovedPiece());
     }
 
@@ -108,7 +110,7 @@ public abstract class Move {
 
         @Override
         public String toString() {
-            return movedPiece.getPieceType() + BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
+            return movedPiece.getPieceType() + "x" + BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
         }
     }
 
@@ -287,7 +289,8 @@ public abstract class Move {
 
         @Override
         public String toString() {
-            return "";
+            return BoardUtils.INSTANCE.getPositionAtCoordinate(this.movedPiece.getPiecePosition()) + "-" +
+                    BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate) + "=" + this.promotedPawn.getPieceType();
         }
     }
 
@@ -320,6 +323,10 @@ public abstract class Move {
             return this == other || other instanceof PawnJump && super.equals(other);
         }
 
+        @Override
+        public String toString() {
+            return BoardUtils.INSTANCE.getPositionAtCoordinate(this.destinationCoordinate);
+        }
     }
 
     static abstract class CastleMove extends Move {
