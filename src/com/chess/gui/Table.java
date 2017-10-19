@@ -76,6 +76,7 @@ public class Table {
         final JMenuBar tableMenuBar = new JMenuBar();
         tableMenuBar.add(createFileMenu());
         tableMenuBar.add(createPreferencesMenu());
+        tableMenuBar.add(createHelpMenue());
         return tableMenuBar;
     }
 
@@ -101,6 +102,27 @@ public class Table {
 
 
         return filesMenu;
+    }
+    private JMenu createHelpMenue(){
+        final JMenu HelpMenu = new JMenu("Help");
+        final JMenuItem gameHelp = new JMenuItem("Game Help");
+        gameHelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { ; }
+        });
+        HelpMenu.add(gameHelp);
+
+        final JMenuItem logicHelp = new JMenuItem("Chess logic");
+        logicHelp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        HelpMenu.add(logicHelp);
+
+
+        return HelpMenu;
     }
 
     private JMenu createPreferencesMenu(){
