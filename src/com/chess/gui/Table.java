@@ -16,7 +16,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.Desktop;
+import java.net.URI;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.io.File;
 import java.awt.image.BufferedImage;
@@ -76,7 +79,7 @@ public class Table {
         final JMenuBar tableMenuBar = new JMenuBar();
         tableMenuBar.add(createFileMenu());
         tableMenuBar.add(createPreferencesMenu());
-        tableMenuBar.add(createHelpMenue());
+        tableMenuBar.add(createHelpMenu());
         return tableMenuBar;
     }
 
@@ -100,15 +103,20 @@ public class Table {
         });
         filesMenu.add(exitMenuItem);
 
-
         return filesMenu;
     }
-    private JMenu createHelpMenue(){
+    
+    private JMenu createHelpMenu(){
         final JMenu HelpMenu = new JMenu("Help");
         final JMenuItem gameHelp = new JMenuItem("Game Help");
         gameHelp.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { ; }
+            public void actionPerformed(ActionEvent e) {JFrame frame = new JFrame("ManageHelp");
+                frame.setContentPane(new ManageHelp().MainContainer);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setVisible(true);
+                frame.setSize(400,400);
+                frame.pack();}
         });
         HelpMenu.add(gameHelp);
 
@@ -116,6 +124,14 @@ public class Table {
         logicHelp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Desktop d = Desktop.getDesktop();
+                try {
+                    d.browse(new URI("https://www.youtube.com/watch?v=fKxG8KjH1Qg)"));
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (URISyntaxException e1) {
+                    e1.printStackTrace();
+                }
 
             }
         });
