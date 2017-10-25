@@ -17,7 +17,5 @@ public class ChessMain {
         else
             System.out.println(file.getPath()+(" Not exists"));
     }
-
-
 }
 
